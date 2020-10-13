@@ -182,47 +182,6 @@ function add_article_info(article_info) {
 		$("#related-articles-not-downloaded-container").append("<br>");	
 	}
 
-	/*
-	var article_info_container = document.createElement('div');
-	var url = $(document.createElement('p')).text("Url: ").append($(document.createElement('a')).text(article_info['url']).attr('href', article_info['url']).attr('target', 'blank'));
-		
-	if (article_info['download_ok'] == 1){
-		article_info['conclusion'] = (article_info['support'] < 50) ?'refutes' : 'supports';
-		article_info['background-color'] = compute_background(article_info['support']);
-
-		//Show article info and support
-		var title      = $(document.createElement('p')).text("Title: " + article_info['title']);
-		var publisher  = $(document.createElement('p')).text("Published by: " + article_info['publisher']);
-		var date       = $(document.createElement('p')).text("Published on: " + article_info['date']);
-		var summary    = $(document.createElement('p')).text("Summary: " + article_info['summary']);
-		var belief     = $(document.createElement('p')).text("We believe there is a  " + article_info['support'] + "% chance that this article supports the claim");
-		var conclusion = $(document.createElement('p')).text("Conclusion: we believe the article " + article_info['conclusion'] + " the claim");
-		
-		//Add a color to the conclusion (to indicate how much we're confident that the article supports the claim)
-		$(conclusion).html($(conclusion).html().replace(article_info['conclusion'], '<span style="background-color: ' + article_info['background-color'] + '">' + article_info['conclusion'] + "</span>"))
-
-		//Add info to the article container
-		$(article_info_container).append(title).append(url).append(publisher).append(date).append(summary).append(belief).append(conclusion);
-
-		//Add questionnaire
-		var question = "Do you agree that this article " + article_info['conclusion'] + " the selected sentence?";
-		add_questionnaire(container=article_info_container, question_text=question, detector="Agreement", target=selected_sentence, prediction=article_info['conclusion'], target_opt=article_info['text']);
-
-		//Append everything to the main container		
-		$("#related-articles-container").append(article_info_container);
-		$("#related-articles-container").append("<br>");
-
-	}
-	else{			
-		//If we couldn't download the article, we only pass url and publisher
-		var publisher = $(document.createElement('p')).text("Published by: " + article_info['url'].replace('https://', '').split('/')[0]);
-		$(article_info_container).append(url).append(publisher);
-
-		$("#related-articles-not-downloaded-container").show();				
-		$("#related-articles-not-downloaded-container").append(article_info_container);	
-		$("#related-articles-not-downloaded-container").append("<br>");	
-	}
-	*/		
 };
 
 //Adds a questionnaire to element "container"
@@ -299,8 +258,6 @@ $("#submit-text").click(function(){
 		text: text
 	}, function(data){
 
-		//window.alert("Probability that the speech is " + data.text_predictions[0]['positive_prediction'] + ": " + data.text_predictions[0]['prediction'])
-
 		//Hides the input textarea and shows the results
 		$("#form-container").hide();
 		$("#main-container").show();
@@ -326,6 +283,7 @@ $("#submit-text").click(function(){
 
 			var prediction = document.createElement('p');
 			data.text_predictions[i]['prediction'] < 0.5 ? $(prediction).text(info_text.replace('We believe', "We don't believe")) : $(prediction).text(info_text);
+			$(prediction).html($(prediction).html.replace(data.text_predictions[i]['positive_prediction'], '<a href="' + data.text_predictions[i]['detector'] + '.html">' + data.text_predictions[i]['positive_prediction'] + '</a>'))
 			$("#text-analysis-container").append(prediction);
 
 			var question_text = "Do you agree that this speech is ";
