@@ -1,0 +1,2 @@
+[{'link': 'agreement_predictor/tf_model.h5'},
+{'link': 'agreement_predictor/tf_model.preproc'}]
