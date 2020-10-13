@@ -36,6 +36,12 @@ form{
 	margin-left: 10%;
 }
 
+#example-list{
+	text-align: center; 
+	text-decoration: underline; 
+	color: blue;
+}
+
 input{
 	width: 10%;
 	margin-left: 45%;
