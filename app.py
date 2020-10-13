@@ -161,11 +161,9 @@ Returns a text that can be used as example by the user
 """
 @app.route('/get_example')
 def get_example():
-	example_name = requests.args.get('example', 0, type=str)
-	
+	example_name = request.args.get('example', 0, type=str)
 	with open('Examples/' + example_name, 'r') as f:
 		text = f.read()
-	
 	return jsonify({'example': text})
 
 
