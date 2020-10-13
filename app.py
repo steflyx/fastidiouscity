@@ -154,6 +154,20 @@ def store_feedback():
 
 	return jsonify({'Status': 'Success!'})
 
+"""
+
+Returns a text that can be used as example by the user
+
+"""
+@app.route('/get_example')
+def get_example():
+	example_name = requests.args.get('example', 0, type=str)
+	
+	with open('Examples/' + example_name, 'r') as f:
+		text = f.read()
+	
+	result jsonify({'example': text})
+
 
 
 """
