@@ -166,7 +166,7 @@ def get_example():
 	with open('Examples/' + example_name, 'r') as f:
 		text = f.read()
 	
-	result jsonify({'example': text})
+	return jsonify({'example': text})
 
 
 
