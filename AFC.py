@@ -1,8 +1,10 @@
 import ktrain
 import ast
 
-worthy_predictor    = ktrain.load_predictor('./weights/worthy_predictor')
-agreement_predictor = ktrain.load_predictor('./weights/agreement_predictor')
+BASE_DIR_WEIGHTS = '../local_server/'
+
+worthy_predictor    = ktrain.load_predictor(BASE_DIR_WEIGHTS + 'weights/worthy_predictor')
+agreement_predictor = ktrain.load_predictor(BASE_DIR_WEIGHTS + 'weights/agreement_predictor')
 
 #In order to load the predictors we need to make a fake predictions
 print("Preparing worthy predictor...")
@@ -13,7 +15,7 @@ agreement_predictor.predict('Economy is booming [SEP] The US GDP is crashing dow
 #We need to load all the models that make predictions over the entire text (list of predictors is saved on a .txt file)
 with open('./weights/predictors_list.txt', 'r') as f: 
   predictors_list = ast.literal_eval(f.read())
-text_predictors = [{'name': predictor['name'], 'predictor': ktrain.load_predictor('./weights/' + predictor['name'] + '_predictor'), 'positive_prediction': predictor['positive_prediction']} for predictor in predictors_list]
+text_predictors = [{'name': predictor['name'], 'predictor': ktrain.load_predictor(BASE_DIR_WEIGHTS + 'weights/' + predictor['name'] + '_predictor'), 'positive_prediction': predictor['positive_prediction']} for predictor in predictors_list]
 
 #Initialize the predictors
 for text_predictor in text_predictors:
