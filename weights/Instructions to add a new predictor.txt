@@ -1,0 +1,12 @@
+Following these instructions will allow you to add a new text predictor trained on ktrain without touching the code.
+Here's what you need to do:
+	- Go to folder 'weights'
+	- Open file 'predictors_list.txt'
+	- Inside the file there is an array of dictionaries. Each dictionary has the form {'name': 'aaa', 'positive_prediction': 'bbb'}
+	- Add a new entry in the array using the info of your predictor ('name' is the predictor name, 
+	     while 'positive_prediction' is what's predicted when prediction is True)
+	- Close the file
+	- Go back to folder 'weights'. Inside this folder, create a new folder called 'name_predictor' (name must be substituted with whatever you put in the dictionary earlier)
+	- Inside the new folder place the files produced by ktrain
+
+Now when the app is started, it will automatically load and show the new predictor!

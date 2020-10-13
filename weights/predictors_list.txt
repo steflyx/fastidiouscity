@@ -1,0 +1,2 @@
+[{'name': 'bias', 'positive_prediction': 'biased'},
+{'name': 'ideology', 'positive_prediction': 'left leaning'}]
