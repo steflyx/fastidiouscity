@@ -304,3 +304,21 @@ $("#submit-text").click(function(){
 	});
 
 });
+
+
+//Loads one of the examples
+$("#example-list li").click(function(){
+
+	var filename = $(this).attr('name');
+			
+	$.getJSON($SCRIPT_ROOT + '/get_example', {
+		example: filename
+	}, function(data){
+
+		//Load example in the input area
+		$('#user-text-input').text(data.example);
+
+	});
+
+});
+
