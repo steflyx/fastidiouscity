@@ -1,0 +1,48 @@
+<!--
+			<div id = "container-left">
+				{% for sentence in sentences %}
+
+					<p style = "background-color :{{ sentence.background }};" class = "sentence" id="{{ sentence.id }}">{{ sentence.text }}</p>
+
+				{% endfor %}
+			</div>	
+
+
+
+			<div id = "container-right">
+				
+				{% for sentence in sentences %}
+
+					<div class = "proof-container" id="support_{{ sentence.id }}">
+						{% if sentence.worthiness < 0.5 %}
+							<p> This sentence is likely not a claim (probability of it being a claim: {{ sentence.worthiness }})</p>
+						{% else %}
+
+							<p> This sentence is likely a claim (probability of it being a claim: {{ sentence.worthiness }})</p>
+
+							<p> We could find {{ sentence.articles_found }} articles related to this claim </p>
+
+							{% if sentence.articles_found > 0 %}
+
+								<p> We believe this claim {% if sentence.support < 0.5 %} not {% endif %} to be supported by facts (likelihood to be supported {{ sentence.support }}) </p>
+
+								<p>The following are related articles we found online:</p>
+
+								{% for article in sentence.articles %}
+
+									<div class="container-article">
+										<p>Title: {{ article.title }}</p>
+										<p>Description: {{ article.description }}</p>
+										<p>Url: {{ article.url }}</p>
+										<p>Supporting the claim with likelihood: {{ article.support }}</p>
+									</div>
+
+								{% endfor %}
+
+							{% endif %}
+						{% endif %}						
+					</div>
+	
+				{% endfor %}
+
+			</div> -->

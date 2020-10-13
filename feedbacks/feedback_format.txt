@@ -1,0 +1,10 @@
+Each detector has a collection of feedbacks stored in a file .txt that has the same name as the detector
+Example: feedbacks on the claim detector are stored in a file named "Claim.txt"
+
+The feedbacks are stored in a .csv format using the following columns
+	- target -> the sentence/article on which we made our prediction
+	- target_opt -> an optional second target for our prediction (for example agreement makes the prediction over two sentences) - put to "None" if not present
+	- prediction -> prediction that the detector made
+	- feedback -> a yes/no answer on whether the user agrees with the prediction
+
+VERY IMPORTANT: The feedback is a "yes/no" answer on whether the user AGREES with the prediction, it's not about what the user think the correct prediction is!

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta title="Automatic Fact Checking system">
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>Fact-Check Automated system</title>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	    <script type=text/javascript>
+		  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+		</script>
+	    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/navbar.css') }}">
+	    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+
+	</head>
+
+	<body>
+		
+		{% include 'navigation.html' %}
+
+		<!-- Initially visible, becomes invisible after submitting a text -->
+		{% include 'input_form_container.html' %}
+
+		<!-- Initially invisible, becomes visibel after submitting a text -->
+		<div id = "main-container">
+
+			{% include 'main_text_container.html' %}
+
+			<div id="analysis-container">
+
+				<div id="text-analysis-container"></div>
+
+				{% include 'side_text_container.html' %}
+
+			</div>
+			
+		</div>
+
+	</body>
+
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</html>

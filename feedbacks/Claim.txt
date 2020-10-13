@@ -1,0 +1,5 @@
+target,target_opt,prediction,feedback"Madam President, Mr. Secretary-General, world leaders, ambassadors, and distinguished delegates: One year ago, I stood before you for the first time in this grand hall.",No,yes
+We should wait and see what the outcome of this election is because that’s the only way the American people get to express their view is by who they elect as President and who they elect as Vice President.,Yes,no
+And so it’s just not appropriate to do this before this election.,No,yes
+"Now, what’s at stake here is the President’s made it clear, he wants to get rid of the Affordable Care Act.",Yes,yes
+The American people have a right to have a say in who the Supreme Court nominee is and that say occurs when they vote for United States Senators and when they vote for the President of United States.,Yes,yes
