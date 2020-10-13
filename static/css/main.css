@@ -42,6 +42,10 @@ form{
 	color: blue;
 }
 
+#example-list:hover{
+	cursor: pointer;
+}
+
 input{
 	width: 10%;
 	margin-left: 45%;
