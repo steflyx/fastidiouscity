@@ -165,8 +165,18 @@ Returns "About us" page
 def show_about():
 	return render_template('about.html')
 
+"""
+
+Return explanations for the various models
 
 """
+@app.route('/bias.html')
+def show_bias():
+	return render_template('bias.html')
+
+@app.route('/ideology.html')
+def show_ideology():
+	return render_template('ideology.html')
 
 Runs the application server side
 
