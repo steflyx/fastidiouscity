@@ -283,7 +283,7 @@ $("#submit-text").click(function(){
 
 			var prediction = document.createElement('p');
 			data.text_predictions[i]['prediction'] < 0.5 ? $(prediction).text(info_text.replace('We believe', "We don't believe")) : $(prediction).text(info_text);
-			$(prediction).html($(prediction).html.replace(data.text_predictions[i]['positive_prediction'], '<a href="' + data.text_predictions[i]['detector'] + '.html">' + data.text_predictions[i]['positive_prediction'] + '</a>'))
+			$(prediction).html($(prediction).html().replace(data.text_predictions[i]['positive_prediction'], '<a href="' + data.text_predictions[i]['detector'] + '.html">' + data.text_predictions[i]['positive_prediction'] + '</a>'))
 			$("#text-analysis-container").append(prediction);
 
 			var question_text = "Do you agree that this speech is ";
