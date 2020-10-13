@@ -178,6 +178,8 @@ def show_bias():
 def show_ideology():
 	return render_template('ideology.html')
 
+"""
+
 Runs the application server side
 
 """
