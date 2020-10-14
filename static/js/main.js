@@ -58,15 +58,15 @@ function show_claim_info(container, sentence, worthiness_prob){
 	var prediction = '';
 
 	container.empty();
-	container.append($(document.createElement('p')).text('The selected sentence is: "' + sentence + '"'));
+	container.append($(document.createElement('p')).html('The selected sentence is: "<b>' + sentence + '</b>"'));
 	container.append("<br>");
 	if (worthiness_prob < 50){
-		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (likelihood of it being a claim: " + worthiness_prob + "%)"));
+		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (with confidence: " + worthiness_prob + "%)"));
 		question = question.replace("is a claim", "is not a claim");
 		prediction = "No";
 	}
 	else{
-		container.append($(document.createElement('p')).text("We believe this sentence is a claim (likelihood of it being a claim: " + worthiness_prob + "%)"));
+		container.append($(document.createElement('p')).text("We believe this sentence is a claim (with confidence: " + worthiness_prob + "%)"));
 		prediction = "Yes";
 	}
 	
@@ -159,11 +159,12 @@ function add_article_info(article_info) {
 
 		//Show article title (with link to the website) plus our prediction on the article support
 		var title = $(document.createElement('p')).text("Title: ").append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
-		var belief = $(document.createElement('p')).text("We believe there is a  " + article_info['support'] + "% chance that this article supports the claim");
+		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
+		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];
+		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (with confidence " + support + "%)");
 		$(article_info_container).append(title).append(belief);
 
 		//Add questionnaire
-		var conclusion = (article_info['support'] < 50) ? 'does not support' : 'supports';
 		var question = "Do you agree that this article " + conclusion + " the selected sentence?";
 		add_questionnaire(article_info_container, question, "Agreement", selected_sentence, conclusion, article_info['text']);
 
@@ -195,7 +196,7 @@ function add_questionnaire(container, question_text, detector, target, predictio
 	//Answer that the user can give (yes/no)
 	var answer = $(document.createElement('p')).addClass('answer-text');
 	$(answer).append($(document.createElement('span')).text('Yes').addClass('answer').addClass('answer-yes'));
-	$(answer).append($(document.createElement('span')).text(' '))
+	$(answer).append($(document.createElement('span')).text('/'))
 	$(answer).append($(document.createElement('span')).text('No').addClass('answer').addClass('answer-no'));
 	$(question_container).append(answer);
 
@@ -278,8 +279,7 @@ $("#submit-text").click(function(){
 		//Show info about the predictions on the complete text
 		for (var i=0; i<data.text_predictions.length; i++){
 			var info_text = "We believe that this speech is " + data.text_predictions[i]['positive_prediction'] + 
-			" (probability of it being " + data.text_predictions[i]['positive_prediction'] + ": " + 
-			+ data.text_predictions[i]['prediction']*100 + "%)";
+			" (with confidence: " + Math.trunc(data.text_predictions[i]['prediction']*100) + "%)";
 
 			var prediction = document.createElement('p');
 			data.text_predictions[i]['prediction'] < 0.5 ? $(prediction).text(info_text.replace('We believe', "We don't believe")) : $(prediction).text(info_text);
