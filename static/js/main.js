@@ -42,7 +42,7 @@ $(document).on('click', '.sentence', function(){
 	}
 
 	//If the sentence is check-worthy, we show the loader screen and send a request to the server to retrieve related articles
-	$("#related-articles-container").append($(document.createElement('p')).html("<b>Evidence found online that support/refute the claim:</b>").css('margin-bottom', '1em'));
+	$("#related-articles-container").append($(document.createElement('p')).html("<b>Evidence found online to support/refute the claim:</b>").css('margin-bottom', '1em'));
 	$(".loader-text").text("Looking for related articles online...");
 	$("#related-articles-loader").show();
 	is_request_pending = true;
