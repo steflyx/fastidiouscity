@@ -1,0 +1,18 @@
+.main-text-container{
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 1em;
+	width: 80%;
+	height: 50%;
+	margin-top: 2.5em;
+	margin-left: 10%;
+}
+
+.sentence{
+	margin-bottom: 10px;
+	text-align: justify;
+}
+
+.sentence:hover{
+	cursor: pointer;
+}

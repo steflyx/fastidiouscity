@@ -1,12 +1,2 @@
-[{'link': 'agreement_predictor/tf_model.h5'},
-{'link': 'agreement_predictor/tf_model.preproc'},
-{'link': 'evidence_predictor/config.json'},
-{'link': 'evidence_predictor/tf_model.h5'},
-{'link': 'evidence_predictor/tf_model.preproc'},
-{'link': 'ideology_predictor/tf_model.h5'},
-{'link': 'ideology_predictor/tf_model.preproc'},
-{'link': 'relevance_predictor/config.json'},
-{'link': 'relevance_predictor/tf_model.h5'},
-{'link': 'relevance_predictor/tf_model.preproc'},
-{'link': 'worthy_predictor/tf_model.h5'},
-{'link': 'worthy_predictor/tf_model.preproc'}]
+[{'link': 'professionality_predictor/tf_model.h5'},
+{'link': 'professionality_predictor/tf_model.preproc'}]

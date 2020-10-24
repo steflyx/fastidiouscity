@@ -1,0 +1,20 @@
+.side-text-container{
+	border: 1px solid;
+	border-radius: 5px;
+	padding: 1em;
+	width: 40%;
+	display: none;
+	float: right;
+}
+
+.article-info-container p{
+	margin-top: 5px;
+}
+
+#related-articles-not-downloaded-container{
+	display: none;
+}
+
+#related-articles-loader{
+	display: none;
+}
