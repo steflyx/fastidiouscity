@@ -52,7 +52,7 @@ $("#submit-text").click(function(){
 });
 
 //Shows predictions on the text
-function show_text_predictions(prediction_info){
+function show_text_prediction(prediction_info){
 
 	var prediction_text = prediction_info['prediction'] < 0.5 ? prediction_info['negative_prediction'] : prediction_info['positive_prediction']
 	var prediction_value = prediction_info['prediction'] < 0.5 ? 1 - prediction_info['prediction'] : prediction_info['prediction'];
