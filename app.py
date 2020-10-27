@@ -172,6 +172,7 @@ def explain_prediction():
 	predictor_name = request.args.get('predictor_name', 0, type=str)
 	text           = request.args.get('text', 0, type=str)
 
+	print("Explaining prediction for text: ", text)
 	result = {'explanation': AFC.explain_prediction(predictor_name, text)}
 	return jsonify(result)
 
