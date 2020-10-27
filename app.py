@@ -154,6 +154,30 @@ def store_feedback():
 
 	return jsonify({'Status': 'Success!'})
 
+
+"""
+
+Returns the explanation to a prediction
+Receives:
+	- predictor_name
+	- text
+Returns
+	- text with HTML markups with different colors according to words' importance
+
+"""
+@app.route('/explain_prediction')
+def explain_prediction():
+
+	#Retrieve arguments sent by the client
+	predictor_name = request.args.get('predictor_name', 0, type=str)
+	text           = request.args.get('text', 0, type=str)
+
+	result = {'explanation': AFC.explain_prediction(predictor_name, text)}
+	return jsonify(result)
+
+
+
+
 """
 
 Returns a text that can be used as example by the user
