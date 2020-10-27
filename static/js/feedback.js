@@ -9,12 +9,12 @@ Contains:
 
 
 //Adds a questionnaire to element "container"
-function add_questionnaire(container, question_text, detector, target, prediction, target_opt="None"){
+function add_questionnaire(container, detector, target, prediction, target_opt="None"){
 
 	var question_container = $(document.createElement('div')).addClass('question-container');
 	
 	//Question that we're asking the user (in the form of "Do you agree this sentence is a ...?")
-	$(question_container).append($(document.createElement('p')).text(question_text).addClass('question-text'));
+	$(question_container).append($(document.createElement('p')).text("Do you agree?").addClass('question-text'));
 
 	//Answer that the user can give (yes/no)
 	var answer = $(document.createElement('p')).addClass('answer-text');
