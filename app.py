@@ -25,7 +25,7 @@ On top of that, the text is given to different predictors that analyze whether i
 
 Returns:
 	array of dict: 'sentences' [{'text', 'worthiness_prob'}]
-	array of dict: 'text_predictions' [{'detector', 'prediction', 'positive_prediction'}]
+	array of dict: 'text_predictions' [{'detector', 'prediction', 'positive_prediction', 'negative_prediction'}]
 
 
 """

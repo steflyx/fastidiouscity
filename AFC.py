@@ -15,7 +15,11 @@ agreement_predictor.predict('Economy is booming [SEP] The US GDP is crashing dow
 #We need to load all the models that make predictions over the entire text (list of predictors is saved on a .txt file)
 with open('./weights/predictors_list.txt', 'r') as f: 
   predictors_list = ast.literal_eval(f.read())
-text_predictors = [{'name': predictor['name'], 'predictor': ktrain.load_predictor(BASE_DIR_WEIGHTS + 'weights/' + predictor['name'] + '_predictor'), 'positive_prediction': predictor['positive_prediction']} for predictor in predictors_list]
+text_predictors = [{'name': predictor['name'], \
+	'predictor': ktrain.load_predictor(BASE_DIR_WEIGHTS + 'weights/' + predictor['name'] + '_predictor'), \
+	'positive_prediction': predictor['positive_prediction'], \
+	'negative_prediction': predictor['negative_prediction']} \
+	for predictor in predictors_list]
 
 #Initialize the predictors
 for text_predictor in text_predictors:
@@ -35,5 +39,22 @@ def check_support(sentence, article):
 #Returns different predictions over an entire text
 #TO DO: Make it work in parallel
 def analyze_text(text):
-  text_predictions = [{'detector': predictor['name'], 'prediction': "{:.2f}".format(predictor['predictor'].predict_proba(text)[1]), 'positive_prediction': predictor['positive_prediction']} for predictor in text_predictors]
+  text_predictions = [{'detector': predictor['name'], \
+  	'prediction': "{:.2f}".format(predictor['predictor'].predict_proba(text)[1]), \
+  	'positive_prediction': predictor['positive_prediction'], \
+  	'negative_prediction': predictor['negative_prediction']} \
+  	for predictor in text_predictors]
   return text_predictions
+
+
+#Explains why a certain prediction was made in a certain way
+def explain_prediction(predictor_name, text):
+  if predictor_name == 'worthy':
+    predictor_to_explain = worthy_predictor
+
+  #The explanation is given in HTML form directly, so we need to clean it first
+  explanation = predictor_to_explain.explain(text)
+  explanation = '<p><span ' + '<span'.join(explanation.data.split('<span')[1:])
+  explanation = explanation.replace('\n', '')
+
+  return explanation

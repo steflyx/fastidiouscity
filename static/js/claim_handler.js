@@ -49,7 +49,7 @@ $(document).on('click', '.sentence', function(){
 	}
 
 	//If the sentence is check-worthy, we show the loader screen and send a request to the server to retrieve related articles
-	$("#related-articles-container").append($(document.createElement('h3')).html("Evidence found online to support/refute the claim"));
+	$("#related-articles-container").append($(document.createElement('h1')).html("Evidence found online to support/refute the claim"));
 	$(".loader-text").text("Looking for related articles online...");
 	$("#related-articles-loader").show();
 	is_request_pending = true;
@@ -69,12 +69,12 @@ function show_claim_info(container, sentence, worthiness_prob){
 	container.append($(document.createElement('p')).html('The selected sentence is: "<b>' + sentence + '</b>"'));
 	container.append("<br>");
 	if (worthiness_prob < 50){
-		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%)"));
+		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%)").css('text-align', 'center'));
 		question = question.replace("is a claim", "is not a claim");
 		prediction = "No";
 	}
 	else{
-		container.append($(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%)"));
+		container.append($(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%)").css('text-align', 'center'));
 		prediction = "Yes";
 	}
 	
