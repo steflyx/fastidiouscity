@@ -61,7 +61,7 @@ $(document).on('click', '.sentence', function(){
 function show_claim_info(container, sentence, worthiness_prob){
 
 	//Info for the questionnaire
-	var question = "Do you agree that this sentence is a claim?";
+	var question = "Do you agree?";
 	var target = sentence;
 	var prediction = '';
 
@@ -70,7 +70,6 @@ function show_claim_info(container, sentence, worthiness_prob){
 	container.append("<br>");
 	if (worthiness_prob < 50){
 		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%)").css('text-align', 'center'));
-		question = question.replace("is a claim", "is not a claim");
 		prediction = "No";
 	}
 	else{
@@ -79,5 +78,6 @@ function show_claim_info(container, sentence, worthiness_prob){
 	}
 	
 	add_questionnaire(container=container, question_text=question, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
+	add_show_why(container, 'worthy', sentence);
 
 };

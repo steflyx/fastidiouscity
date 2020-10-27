@@ -21,12 +21,15 @@ function add_show_why(container, predictor_name, text){
 
 $(document).on('click', '.show_why', function(){
 
+	var button = $(this);
+
 	$.getJSON($SCRIPT_ROOT + '/explain_prediction', {
 		'predictor_name': $(this).attr('predictor'),
 		'text': $(this).attr('text_to_explain')
 	}, function(data){
 
-		$(this).html(data.explanation);
+		button.html(data.explanation);
+		button.removeClass('show_why');
 				
 	});
 
