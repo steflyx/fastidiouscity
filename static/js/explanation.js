@@ -30,4 +30,4 @@ $(document).on('click', '.show_why', function(){
 				
 	});
 
-};
+});
