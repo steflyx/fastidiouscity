@@ -49,8 +49,22 @@ def analyze_text(text):
 
 #Explains why a certain prediction was made in a certain way
 def explain_prediction(predictor_name, text):
+
+  #The predictor can be either worthy_predictor, agreement_predictor or one of the text_predictors
+  predictor_to_explain = None
   if predictor_name == 'worthy':
     predictor_to_explain = worthy_predictor
+  if predictor_name == 'agreement':
+    predictor_to_explain = agreement_predictor
+  for predictor in text_predictors:
+    if predictor_name == predictor['name']:
+      predictor_to_explain = predictor['predictor']
+      break
+
+  #Error with predictor name
+  if predictor_to_explain == None:
+    print("Error: no predictor named ", predictor_name)
+    return
 
   #The explanation is given in HTML form directly, so we need to clean it first
   explanation = predictor_to_explain.explain(text)
