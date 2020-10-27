@@ -66,11 +66,11 @@ function add_article_info(article_info) {
 		var title = $(document.createElement('p')).text("Title: ").append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
 		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
 		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];
-		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (with confidence " + support + "%)");
+		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (confidence " + support + "%)");
 		$(article_info_container).append(title).append(belief);
 
 		//Add questionnaire
-		var question = "Do you agree that this article " + conclusion + " the selected sentence?";
+		var question = "Do you agree?";
 		add_questionnaire(article_info_container, question, "Agreement", selected_sentence, conclusion, article_info['text']);
 
 		//Append everything to the main container		

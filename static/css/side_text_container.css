@@ -1,14 +1,24 @@
 .side-text-container{
 	border: 1px solid;
-	border-radius: 5px;
-	padding: 1em;
-	width: 40%;
-	display: none;
-	float: right;
+    border-radius: 5px;
+    padding: 1em;
+    width: 30vw;
+    float: right;
+    margin-right: 4vw;
 }
 
 .article-info-container p{
 	margin-top: 5px;
+}
+
+#related-articles-container{
+	margin-bottom: 1em;
+	text-align: center;	
+}
+
+#related-articles-container h1{
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 #related-articles-not-downloaded-container{

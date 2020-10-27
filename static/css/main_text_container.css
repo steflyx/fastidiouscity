@@ -1,11 +1,17 @@
+.main-container-left{
+    width: 55vw;
+    height: 50%;
+    margin-left: 5vw;
+    float: left;	
+}
+
 .main-text-container{
 	border: 1px solid;
-	border-radius: 5px;
-	padding: 1em;
-	width: 80%;
-	height: 50%;
-	margin-top: 2.5em;
-	margin-left: 10%;
+    border-radius: 5px;
+    padding: 1em;
+    margin-top: 0.5em;
+    margin-right: 0;
+    text-align: justify;
 }
 
 .sentence{

@@ -43,21 +43,16 @@ $("#submit-text").click(function(){
 		//Show info about the predictions on the complete text
 		for (var i=0; i<data.text_predictions.length; i++){
 			var info_text = "We believe that this speech is " + data.text_predictions[i]['positive_prediction'] + 
-			" (with confidence: " + Math.trunc(data.text_predictions[i]['prediction']*100) + "%)";
+			" (confidence: " + Math.trunc(data.text_predictions[i]['prediction']*100) + "%)";
 
 			var prediction = document.createElement('p');
 			data.text_predictions[i]['prediction'] < 0.5 ? $(prediction).text(info_text.replace('We believe', "We don't believe")) : $(prediction).text(info_text);
 			$(prediction).html($(prediction).html().replace(data.text_predictions[i]['positive_prediction'], '<a href="' + data.text_predictions[i]['detector'] + '.html">' + data.text_predictions[i]['positive_prediction'] + '</a>'))
 			$("#text-analysis-container").append(prediction);
 
-			var question_text = "Do you agree that this speech is ";
-			question_text += data.text_predictions[i]['prediction'] < 0.5 ? "not " : "";
-			question_text += data.text_predictions[i]['positive_prediction'] + "?";
-
+			var question_text = "Do you agree?";
 			var detector = data.text_predictions[i]['detector'];
-
 			var target = $("#main-text").text();
-
 			var prediction = data.text_predictions[i]['prediction'];
 
 			add_questionnaire(container="#text-analysis-container", question_text=question_text, detector=detector, target, prediction=prediction, target_opt="None");
