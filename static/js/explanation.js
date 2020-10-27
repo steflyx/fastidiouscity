@@ -29,8 +29,10 @@ $(document).on('click', '.show_why', function(){
 	}, function(data){
 
 		button.html(data.explanation);
-		button.removeClass('show_why');
 				
 	});
+	
+	button.removeClass('show_why');
+	button.text("It will take a few moments...");
 
 });

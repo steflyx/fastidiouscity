@@ -61,7 +61,6 @@ $(document).on('click', '.sentence', function(){
 function show_claim_info(container, sentence, worthiness_prob){
 
 	//Info for the questionnaire
-	var question = "Do you agree?";
 	var target = sentence;
 	var prediction = '';
 
@@ -77,7 +76,7 @@ function show_claim_info(container, sentence, worthiness_prob){
 		prediction = "Yes";
 	}
 	
-	add_questionnaire(container=container, question_text=question, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
+	add_questionnaire(container=container, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
 	add_show_why(container, 'worthy', sentence);
 
 };

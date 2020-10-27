@@ -54,21 +54,22 @@ $("#submit-text").click(function(){
 //Shows predictions on the text
 function show_text_prediction(prediction_info){
 
+	//Prepare the text to show positive/negative prediction
 	var prediction_text = prediction_info['prediction'] < 0.5 ? prediction_info['negative_prediction'] : prediction_info['positive_prediction']
 	var prediction_value = prediction_info['prediction'] < 0.5 ? 1 - prediction_info['prediction'] : prediction_info['prediction'];
 	var info_text = "We believe that this text is " + prediction_text + " (confidence: " + Math.trunc(prediction_value*100) + "%)";
 
+	//Put everything in a container
 	var prediction_container = $(document.createElement('div')).addClass('text-prediction-container');
 	var prediction_html = $(document.createElement('p')).text(info_text);
 	$(prediction_html).html($(prediction_html).html().replace(prediction_text, '<a href="' + prediction_info['detector'] + '.html">' + prediction_text + '</a>'))
 	$(prediction_container).append(prediction_html);
 
-	var question_text = "Do you agree?";
+	//Add questionnaire and show why button
 	var detector      = prediction_info['detector'];
 	var target        = $("#main-text").text();
 	var prediction    = prediction_info['prediction'];
-
-	add_questionnaire(container=prediction_container, question_text=question_text, detector=detector, target, prediction=prediction, target_opt="None");
+	add_questionnaire(container=prediction_container, detector=detector, target, prediction=prediction, target_opt="None");
 	add_show_why(prediction_container, detector, target);
 
 	return prediction_container;
