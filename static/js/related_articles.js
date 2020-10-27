@@ -63,11 +63,12 @@ function add_article_info(article_info) {
 	if (article_info['download_ok'] == 1){
 
 		//Show article title (with link to the website) plus our prediction on the article support
-		var title = $(document.createElement('p')).text("Title: ").append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
+		var title = $(document.createElement('p')).append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
+		var summary = $(document.createElement('p')).text(article_info['summary']);
 		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
 		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];
 		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (confidence " + support + "%)");
-		$(article_info_container).append(title).append(belief);
+		$(article_info_container).append(title).append(summary).append(belief);
 
 		//Add questionnaire
 		var question = "Do you agree?";

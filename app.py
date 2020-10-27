@@ -111,7 +111,7 @@ def get_article_info():
 	if article['download_ok'] == 0:
 		print("Impossible to retrieve article on url ", article['url'])
 	else:
-		article['support'] = int(AFC.check_support(sentence_text, article['text']) * 100)
+		article['support'] = int(AFC.check_support(sentence_text, article['summary']) * 100)
 		print("Retrieved article on url {0}; Supporting the claim with confidence {1}".format(article['url'], article['support']))
 
 	#Send back the result

@@ -7,6 +7,12 @@
     margin-right: 4vw;
 }
 
+.article-info-container{
+	margin-bottom: 0.5em;
+	border-bottom: solid 1px;
+	padding-bottom: 0.5em;
+}
+
 .article-info-container p{
 	margin-top: 5px;
 }
