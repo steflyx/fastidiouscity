@@ -48,7 +48,7 @@ def get_article_info(link):
 		return {'url': link, 'download_ok': 0}
 
 	#If the download encounters issue or if we're not able to get summary+text of the article, we return an error
-	if article.summary == '' or article.text == '':
+	if article.summary == '' or article.text == '' or article.title == 'Are you a robot?':
 		return {'url': link, 'download_ok': 0}
 
 	#Build the dictionary with the article info
