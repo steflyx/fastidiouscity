@@ -67,12 +67,12 @@ function add_article_info(article_info) {
 		var summary = $(document.createElement('p')).text(article_info['summary']);
 		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
 		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];
-		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (confidence " + support + "%)");
+		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (confidence " + support + "%).");
 		$(article_info_container).append(title).append(summary).append(belief);
 
 		//Add questionnaire
-		add_questionnaire(article_info_container, "Agreement", $(selected_sentence).text(), conclusion, $(summary).text());
-		add_show_why(article_info_container, 'agreement', $(selected_sentence).text() + " [SEP] " + $(summary).text());
+		add_questionnaire(belief, "Agreement", $(selected_sentence).text(), conclusion, $(summary).text());
+		add_show_why(belief, 'agreement', $(selected_sentence).text() + " [SEP] " + $(summary).text());
 
 		//Append everything to the main container		
 		$("#related-articles-container").append(article_info_container);

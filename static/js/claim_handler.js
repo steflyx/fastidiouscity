@@ -65,19 +65,20 @@ function show_claim_info(container, sentence, worthiness_prob){
 	var prediction = '';
 
 	container.empty();
-	container.append($(document.createElement('p')).html('The selected sentence is:'));
+	container.append($(document.createElement('p')).html('You have selected the following sentence:'));
 	container.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
 	container.append("<br>");
 	if (worthiness_prob < 50){
-		container.append($(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%)").css('text-align', 'center'));
+		belief = $(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%).").css('text-align', 'center');
 		prediction = "No";
 	}
 	else{
-		container.append($(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%)").css('text-align', 'center'));
+		belief = $(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%).").css('text-align', 'center');
 		prediction = "Yes";
 	}
 	
-	add_questionnaire(container=container, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
-	add_show_why(container, 'worthy', sentence);
+	container.append(belief);
+	add_questionnaire(container=belief, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
+	add_show_why(belief, 'worthy', sentence);
 
 };

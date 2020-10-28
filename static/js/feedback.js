@@ -11,17 +11,13 @@ Contains:
 //Adds a questionnaire to element "container"
 function add_questionnaire(container, detector, target, prediction, target_opt="None"){
 
-	var question_container = $(document.createElement('div')).addClass('question-container');
-	
-	//Question that we're asking the user (in the form of "Do you agree this sentence is a ...?")
-	$(question_container).append($(document.createElement('p')).text("Do you agree?").addClass('question-text'));
-
-	//Answer that the user can give (yes/no)
-	var answer = $(document.createElement('p')).addClass('answer-text');
-	$(answer).append($(document.createElement('span')).text('Yes').addClass('answer').addClass('answer-yes'));
-	$(answer).append($(document.createElement('span')).text('/'))
-	$(answer).append($(document.createElement('span')).text('No').addClass('answer').addClass('answer-no'));
-	$(question_container).append(answer);
+	//Add question "Do you agree? Yes/No"
+	var question_container = $(document.createElement('span'));
+	$(question_container).append($(document.createElement('span')).text(" Do you agree? "));
+	$(question_container).append($(document.createElement('span')).text("Yes").addClass('answer').addClass('answer-yes'));
+	$(question_container).append($(document.createElement('span')).text("/"));
+	$(question_container).append($(document.createElement('span')).text("No").addClass('answer').addClass('answer-no'));
+	$(question_container).append($(document.createElement('span')).text(" "));
 
 	//Hidden fields (detector, target, prediction, target_opt)
 	$(question_container).append($(document.createElement('p')).addClass('question-hidden-fields').addClass('detector').text(detector))
@@ -29,7 +25,7 @@ function add_questionnaire(container, detector, target, prediction, target_opt="
 	$(question_container).append($(document.createElement('p')).addClass('question-hidden-fields').addClass('prediction').text(prediction))
 	$(question_container).append($(document.createElement('p')).addClass('question-hidden-fields').addClass('target_opt').text(target_opt))
 
-	//Add the questionnaire to the original container
+	//Append to the initial container
 	$(container).append(question_container);
 
 }
@@ -60,7 +56,7 @@ $(document).on('click', '.answer', function(){
 
 		//Empty the questionnaire and thank the user
 		answer_item.empty();
-		answer_item.text("Thanks for your response!");
+		answer_item.text(" Thanks for your response! ");
 				
 	});
 

@@ -11,7 +11,7 @@ Returns:
 */
 function add_show_why(container, predictor_name, text){
 	
-	var button = $(document.createElement('p')).text('Show why');
+	var button = $(document.createElement('span')).text('Show why we believe this');
 	button.attr('predictor', predictor_name);
 	button.attr('text_to_explain', text);
 	button.addClass('show_why');

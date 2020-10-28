@@ -27,11 +27,10 @@ h1{
 
 #text-analysis-container{
     padding: 1em;
-    width: 40vw;
+    width: 55vw;
     float: left;
     margin-top: 1em;
-    margin-left: 12vw;
-    text-align: center;
+    margin-left: 5vw;
 }
 
 .text-prediction-container{
