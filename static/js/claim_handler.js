@@ -65,7 +65,7 @@ function show_claim_info(container, sentence, worthiness_prob){
 	var prediction = '';
 
 	container.empty();
-	container.append($(document.createElement('p')).html('The selected sentence is:');
+	container.append($(document.createElement('p')).html('The selected sentence is:'));
 	container.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
 	container.append("<br>");
 	if (worthiness_prob < 50){
