@@ -82,6 +82,7 @@ def get_articles():
 	sentence_text = request.args.get('sentence', 0, type=str)
 	text = request.args.get('text', 0, type=str)
 	print("Received sentence: ", sentence_text)
+	print("Received text: ", text)
 
 	#Apply co-reference resolution
 	searched_sentence = coreference.link_entities(text, sentence_text)
