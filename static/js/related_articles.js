@@ -18,7 +18,8 @@ function send_request_articles(sentence_text) {
 	is_request_pending = true;
 		
 	$.getJSON($SCRIPT_ROOT + '/get_articles', {
-		text: sentence_text
+		sentence: sentence_text,
+		text: input_text
 	}, function(data){
 
 		//Show the modified sentence without co-reference

@@ -18,6 +18,7 @@ $("#submit-text").click(function(){
 	//Gets:
 	//	the test given in input by the user
 	var text = $("#user-text-input").val();
+	input_text = text; //Keeps the text in a global variable
 			
 	$.getJSON($SCRIPT_ROOT + '/analyze_text', {
 		text: text
