@@ -2,7 +2,8 @@ import ktrain
 import ast
 import os
 
-os.environ["CUDA_VISIBLE_DEVICES"]="1"
+#Change "1" with "0,1" or "0" depending on which GPU you want to use
+#os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 BASE_DIR_WEIGHTS = '../local_server/'
 

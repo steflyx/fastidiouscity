@@ -1,0 +1,2 @@
+#Use the following command to start the demo on just one GPU
+CUDA_VISIBLE_DEVICES=1 python3 app.py

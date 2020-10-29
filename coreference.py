@@ -1,7 +1,9 @@
 from happytransformer import HappyROBERTA
 import numpy as np
 import spacy
+import os
 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 happy_roberta = HappyROBERTA("roberta-large")
 nlp = spacy.load("en")
 #On some architectures
