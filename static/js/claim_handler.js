@@ -6,10 +6,6 @@ Contains:
 	- Function to show claim info
 
 */
-
-
-
-
 /*
 
 This is the handler for showing information about a particular sentence.
@@ -48,11 +44,7 @@ $(document).on('click', '.sentence', function(){
 		return;
 	}
 
-	//If the sentence is check-worthy, we show the loader screen and send a request to the server to retrieve related articles
-	$("#related-articles-container").append($(document.createElement('h1')).html("Evidence found online to support/refute the claim"));
-	$(".loader-text").text("Looking for related articles online...");
-	$("#related-articles-loader").show();
-	is_request_pending = true;
+	//If the sentence is check-worthy, we send a request to the server to retrieve related articles
 	send_request_articles(selected_sentence.text());
 
 });

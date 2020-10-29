@@ -10,10 +10,20 @@ Contains:
 
 //Sends an AJAX GET request to get the links to articles related to the sentence 
 function send_request_articles(sentence_text) {
+
+	//Show loader and title
+	$("#related-articles-container").append($(document.createElement('h1')).text("Evidence found online to support/refute the claim"));
+	$(".loader-text").text("Looking for related articles online...");
+	$("#related-articles-loader").show();
+	is_request_pending = true;
 		
 	$.getJSON($SCRIPT_ROOT + '/get_articles', {
 		text: sentence_text
 	}, function(data){
+
+		//Show the modified sentence without co-reference
+		$("#related-articles-container").append($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
+		$("#related-articles-container").append($(document.createElement('p')).text(data.new_sentence));
 
 		//For each retrieved link, asks the server to send its info
 		$(".loader-text").text("Found " + data.related_articles.length + " articles! Analyzing them...");
@@ -22,7 +32,7 @@ function send_request_articles(sentence_text) {
 		for (var i=0; i<data.related_articles.length; i++){
 
 		//Send request to the server to retrieve article info and to compute its support towards the claim
-		article_info = send_request_article_info(data.related_articles[i], data.sentence);
+		article_info = send_request_article_info(data.related_articles[i], data.new_sentence);
 
 		}
 

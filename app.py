@@ -4,6 +4,7 @@ import concurrent.futures
 import nltk
 import news_search
 import csv
+import coreference
 nltk.download('punkt')
 
 app = Flask(__name__, static_url_path='/static')
@@ -65,7 +66,9 @@ def analyze_text():
 
 """
 
-Receives a sentence from the client, answers with an array of links pointing to related articles
+Receives:
+	string: 'sentence' (the sentence we want to analyze)
+	string: 'text' (the entire text)
 
 Returns:
 	array of strings: 'related_articles'
@@ -76,15 +79,20 @@ Returns:
 def get_articles():
 
 	#Retrieve sentence to analyze
-	sentence_text = request.args.get('text', 0, type=str)
+	sentence_text = request.args.get('sentence', 0, type=str)
+	text = request.args.get('text', 0, type=str)
 	print("Received sentence: ", sentence_text)
 
+	#Apply co-reference resolution
+	searched_sentence = coreference.link_entities(text, sentence_text)
+	print("Searching for sentence: ", searched_sentence)
+
 	#Retrieve links to related articles
-	related_articles_links = news_search.get_related_articles(sentence_text)
+	related_articles_links = news_search.get_related_articles(searched_sentence)
 	print("Retrieved {} links".format(len(related_articles_links)))
 
 	#Send back the result
-	result = {'related_articles': related_articles_links, 'sentence': sentence_text}
+	result = {'related_articles': related_articles_links, 'new_sentence': searched_sentence}
 	return jsonify(result)
 
 """
