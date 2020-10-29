@@ -8,7 +8,7 @@ nlp = spacy.load("en")
 #nlp = spacy.load("en_core_web_sm")
 
 #To load the model
-print("AI will cause world ", happy_roberta.predict_mask("AI will cause world [MASK]", options=proper_nouns, num_results=len(options))[0]['word'])
+print("AI will cause world ", happy_roberta.predict_mask("AI will cause world [MASK]", num_results=5)[0]['word'])
 
 #Returns:
 # - list of tokens forming the text
@@ -41,10 +41,13 @@ Returns:
 
 def link_entities(text_, sentence, threshold=0.0001):
 
-  #We will get 
+  #We will get words, proper nouns and pronouns for text + sentence
   words_0, proper_nouns_0, _ = recognize_nouns(text_.split(sentence)[0])
   words_1, proper_nouns_1, pronouns = recognize_nouns(sentence)
   words_2, proper_nouns_2, _ = recognize_nouns(text_.split(sentence)[1])
+
+  #We want all the words and all the proper_nouns in the text, but we want pronouns
+  #only from the sentence we're focusing on
   words = words_0 + words_1 + words_2
   proper_nouns = proper_nouns_0 + proper_nouns_1 + proper_nouns_2
   pronouns += len(words_0)
@@ -63,7 +66,7 @@ def link_entities(text_, sentence, threshold=0.0001):
       text = " ".join(words[:pronoun] + ['[MASK]'] + words[pronoun+1:])
 
     #Predict the [MASK] token
-    results = happy_roberta.predict_mask(text, options=proper_nouns, num_results=len(options))
+    results = happy_roberta.predict_mask(text, options=proper_nouns, num_results=len(proper_nouns))
     if results[0]['softmax'] >= threshold:
       words_1[pronoun - len(words_0)] = results[0]['word']
 

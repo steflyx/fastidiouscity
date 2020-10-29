@@ -1,5 +1,8 @@
 import ktrain
 import ast
+import os
+
+os.environ["CUDA_VISIBLE_DEVICES"]="1"
 
 BASE_DIR_WEIGHTS = '../local_server/'
 
