@@ -31,7 +31,7 @@ $(document).on('click', '.show_why', function(){
 	}, function(data){
 
 		button.empty();
-		container.append($(document.createElement('p')).css('margin: 0.5em').html("Words <span style='background-color: rgb(0,255,0)'>highlighted in green</span> support the prediction, while words <span style='background-color: rgb(255,0,0)'>highlighted in red</span> deny it"))
+		container.append($(document.createElement('p')).html("Words <span style='background-color: rgb(0,255,0)'>highlighted in green</span> support the prediction, while words <span style='background-color: rgb(255,0,0)'>highlighted in red</span> deny it").css('margin: 0.5em'));
 		container.append($(document.createElement('p')).addClass('explanation-text').html(data.explanation));
 				
 	});
