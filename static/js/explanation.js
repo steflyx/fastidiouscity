@@ -11,11 +11,12 @@ Returns:
 */
 function add_show_why(container, predictor_name, text){
 	
-	var button = $(document.createElement('span')).text('Show why we believe this');
+	var button = $(document.createElement('span')).text('Show why.');
 	button.attr('predictor', predictor_name);
 	button.attr('text_to_explain', text);
 	button.addClass('show_why');
 	$(container).append(button);
+	$(container).append($(document.createElement('span').text(" ")));
 	
 };
 

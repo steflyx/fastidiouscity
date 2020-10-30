@@ -13,7 +13,7 @@ function add_questionnaire(container, detector, target, prediction, target_opt="
 
 	//Add question "Do you agree? Yes/No"
 	var question_container = $(document.createElement('span'));
-	$(question_container).append($(document.createElement('span')).text(" Do you agree? "));
+	$(question_container).append($(document.createElement('span')).text("Do you agree? "));
 	$(question_container).append($(document.createElement('span')).text("Yes").addClass('answer').addClass('answer-yes'));
 	$(question_container).append($(document.createElement('span')).text("/"));
 	$(question_container).append($(document.createElement('span')).text("No").addClass('answer').addClass('answer-no'));
