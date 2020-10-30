@@ -3,6 +3,7 @@
     width: 30vw;
     float: right;
     margin-right: 4vw;
+    text-align: center;
 }
 
 .article-info-container{
@@ -13,6 +14,11 @@
 
 .article-info-container p{
 	margin-top: 5px;
+}
+
+.article-summary{
+	border: solid 1px;
+	padding: 0.5em;
 }
 
 #related-articles-container{

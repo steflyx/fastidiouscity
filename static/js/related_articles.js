@@ -24,7 +24,8 @@ function send_request_articles(sentence_text) {
 
 		//Show the modified sentence without co-reference
 		$("#related-articles-container").append($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
-		$("#related-articles-container").append($(document.createElement('p')).text(data.new_sentence));
+		$("#related-articles-container").append($(document.createElement('p')).html('"<b>' + data.new_sentence + '</b>"'));
+		$("#related-articles-container").append($(document.createElement('br')));
 
 		//For each retrieved link, asks the server to send its info
 		$(".loader-text").text("Found " + data.related_articles.length + " articles! Analyzing them...");
@@ -75,7 +76,7 @@ function add_article_info(article_info) {
 
 		//Show article title (with link to the website) plus our prediction on the article support
 		var title = $(document.createElement('p')).append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
-		var summary = $(document.createElement('p')).text(article_info['summary']);
+		var summary = $(document.createElement('p')).text(article_info['summary']).addClass('article-summary');
 		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
 		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];
 		var belief = $(document.createElement('p')).html("We believe that the article  <b>" + conclusion + "</b> the claim (confidence " + support + "%).");
