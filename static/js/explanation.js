@@ -20,23 +20,47 @@ function add_show_why(container, predictor_name, text){
 	
 };
 
+//Sends info to the server and shows the prediction
 $(document).on('click', '.show_why', function(){
 
 	var button = $(this);
 	var container = $(this).parent().parent();
 
+	//Send predictor's name and text to explain
 	$.getJSON($SCRIPT_ROOT + '/explain_prediction', {
 		'predictor_name': $(this).attr('predictor'),
 		'text': $(this).attr('text_to_explain')
 	}, function(data){
 
+		//Remove 'show why' button and insert a short intro on how the explanation works
 		button.empty();
 		container.append($(document.createElement('p')).html("Words <span style='background-color: rgb(0,255,0)'>highlighted in green</span> support the prediction, while words <span style='background-color: rgb(255,0,0)'>highlighted in red</span> deny it").css('margin: 0.5em'));
-		container.append($(document.createElement('p')).addClass('explanation-text').html(data.explanation));
+		
+		//Show the explanation		
+		var explanation = $(document.createElement('p')).addClass('explanation-text').html(data.explanation);
+		container.append(explanation);
+
+		//Remove [sep] token + preceding sentence if agreement predictor
+		if($(button).attr('predictor') == 'agreement'){
+			remove_sep(explanation);
+		}
 				
 	});
 	
 	button.removeClass('show_why');
-	button.text("It will take a few moments...");
+	button.text(" It will take a few moments...");
 
 });
+
+//Remove the [sep] token from an explanation
+function remove_sep(explanation){
+
+	var explanation_span = $(explanation).children();
+	for (var i=0; i<explanation_span.length; i++){
+	    if ($(explanation_span[i]).text() == "] "){
+	        $(explanation_span[i]).empty();
+	        break;
+	    }
+    	$(explanation_span[i]).empty();
+	}
+}
