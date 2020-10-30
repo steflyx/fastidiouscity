@@ -70,7 +70,7 @@ function show_claim_info(container, sentence, worthiness_prob){
 	}
 	
 	container.append(belief);
-	add_questionnaire(container=belief, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
 	add_show_why(belief, 'worthy', sentence);
+	add_questionnaire(container=belief, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
 
 };

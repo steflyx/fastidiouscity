@@ -82,8 +82,8 @@ function add_article_info(article_info) {
 		$(article_info_container).append(title).append(summary).append(belief);
 
 		//Add questionnaire
-		add_questionnaire(belief, "Agreement", $(selected_sentence).text(), conclusion, $(summary).text());
 		add_show_why(belief, 'agreement', $(selected_sentence).text() + " [SEP] " + $(summary).text());
+		add_questionnaire(belief, "Agreement", $(selected_sentence).text(), conclusion, $(summary).text());
 
 		//Append everything to the main container		
 		$("#related-articles-container").append(article_info_container);
