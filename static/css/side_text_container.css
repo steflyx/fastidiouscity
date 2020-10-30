@@ -3,7 +3,7 @@
     width: 30vw;
     float: right;
     margin-right: 4vw;
-    text-align: center;
+    text-align: justify;
 }
 
 .article-info-container{
@@ -23,7 +23,6 @@
 
 #related-articles-container{
 	margin-bottom: 1em;
-	text-align: center;	
 }
 
 #related-articles-container h1{

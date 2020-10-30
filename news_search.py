@@ -14,6 +14,7 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 nltk.download('stopwords')
 stopwords = set(nltk.corpus.stopwords.words()) 
+article_titles_to_drop = ['Are you a robot?', 'Subscribe to read']
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 config = Config()
@@ -48,7 +49,7 @@ def get_article_info(link):
 		return {'url': link, 'download_ok': 0}
 
 	#If the download encounters issue or if we're not able to get summary+text of the article, we return an error
-	if article.summary == '' or article.text == '' or article.title == 'Are you a robot?':
+	if article.summary == '' or article.text == '' or article.title in article_titles_to_drop:
 		return {'url': link, 'download_ok': 0}
 
 	#Build the dictionary with the article info

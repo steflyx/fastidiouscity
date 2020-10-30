@@ -75,7 +75,7 @@ function add_article_info(article_info) {
 	if (article_info['download_ok'] == 1){
 
 		//Show article title (with link to the website) plus our prediction on the article support
-		var title = $(document.createElement('p')).append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
+		var title = $(document.createElement('p')).html("<b>Title: </b>").append($(document.createElement('a')).text(article_info['title']).attr('href', article_info['url']));
 		var summary = $(document.createElement('p')).text(article_info['summary']).addClass('article-summary');
 		var conclusion = (article_info['support'] < 50) ? 'refutes' : 'supports';
 		var support = (article_info['support'] < 50) ? 100 - article_info['support'] : article_info['support'];

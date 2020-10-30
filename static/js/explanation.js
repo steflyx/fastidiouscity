@@ -23,13 +23,15 @@ function add_show_why(container, predictor_name, text){
 $(document).on('click', '.show_why', function(){
 
 	var button = $(this);
+	var container = $(this).parent().parent();
 
 	$.getJSON($SCRIPT_ROOT + '/explain_prediction', {
 		'predictor_name': $(this).attr('predictor'),
 		'text': $(this).attr('text_to_explain')
 	}, function(data){
 
-		button.html(data.explanation);
+		button.empty();
+		container.append($(document.createElement('p')).html(data.explanation));
 				
 	});
 	
