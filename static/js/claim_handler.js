@@ -61,11 +61,11 @@ function show_claim_info(container, sentence, worthiness_prob){
 	container.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
 	container.append("<br>");
 	if (worthiness_prob < 50){
-		belief = $(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%).");
+		belief = $(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%). ");
 		prediction = "No";
 	}
 	else{
-		belief = $(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%).");
+		belief = $(document.createElement('p')).text("We believe this sentence is a claim (confidence: " + worthiness_prob + "%). ");
 		prediction = "Yes";
 	}
 	

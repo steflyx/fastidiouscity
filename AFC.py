@@ -72,7 +72,8 @@ def explain_prediction(predictor_name, text):
 
   #The explanation is given in HTML form directly, so we need to clean it first
   explanation = predictor_to_explain.explain(text)
-  explanation = '<p><span ' + '<span'.join(explanation.data.split('<span')[1:])
+  explanation = '<span ' + '<span'.join(explanation.data.split('<span')[1:])
   explanation = explanation.replace('\n', '')
+  explanation = explanation.replace('</p>', '')
 
   return explanation

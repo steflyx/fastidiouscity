@@ -48,7 +48,7 @@ $(document).on('click', '.show_why', function(){
 	});
 	
 	button.removeClass('show_why');
-	button.text(" It will take a few moments...");
+	button.text("It will take a few moments...");
 
 });
 
