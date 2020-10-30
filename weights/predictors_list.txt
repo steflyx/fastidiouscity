@@ -1,3 +1,3 @@
-[{'name': 'bias', 'positive_prediction': 'biased', 'negative_prediction': 'unbiased'},
-{'name': 'ideology', 'positive_prediction': 'left leaning', 'negative_prediction': 'right leaning'},
-{'name': 'professionality', 'positive_prediction': 'written by professionals', 'negative_prediction': 'not written by professionals'}]
+[{'name': 'bias', 'positive_prediction': 'is biased', 'negative_prediction': 'is not biased'},
+{'name': 'ideology', 'positive_prediction': 'leans to the left', 'negative_prediction': leans to the right'},
+{'name': 'professionality', 'positive_prediction': 'was written by a professional', 'negative_prediction': 'was not written by a professionala'}]
