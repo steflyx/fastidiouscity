@@ -1,4 +1,4 @@
-from happytransformer import HappyROBERTA
+#from happytransformer import HappyROBERTA
 import numpy as np
 import spacy
 import os
@@ -55,8 +55,8 @@ def link_entities(text_, sentence, threshold=0.0001):
   pronouns += len(words_0)
   
   #If no pronoun is found, just return the text as it is
-  if len(pronouns) == 0 or len(proper_nouns):
-    return text_
+  if len(pronouns) == 0 or len(proper_nouns) == 0:
+    return sentence
 
   #The mask token prediction can be made with just one token at the time
   for pronoun in pronouns:
