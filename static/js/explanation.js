@@ -16,7 +16,7 @@ function add_show_why(container, predictor_name, text){
 	button.attr('text_to_explain', text);
 	button.addClass('show_why');
 	$(container).append(button);
-	$(container).append($(document.createElement('span').text(" ")));
+	$(container).append($(document.createElement('span')).text(" "));
 	
 };
 
