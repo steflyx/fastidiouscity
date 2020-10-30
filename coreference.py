@@ -43,8 +43,8 @@ Returns:
 
 def link_entities(text_, sentence, threshold=1e-20):
 
-  text_ = text_.replace("", "'")
-  sentence = sentence.replace("", "'")
+  text_ = text_.replace("’", "'")
+  sentence = sentence.replace("’", "'")
 
   #We will get words, proper nouns and pronouns for text + sentence
   words_0, proper_nouns_0, _ = recognize_nouns(text_.split(sentence)[0])
