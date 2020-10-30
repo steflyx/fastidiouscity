@@ -77,8 +77,8 @@ function send_request_article_info(link, sentence_text){
 			$("#related-articles-container").find("h1").after('<br>');
 			$("#related-articles-container").find("h1").after(final_balance);
 		}
-		$("#articles_retrieved").text(articles_downloaded);
-		$("#supporting_articles").text(supporting_articles);
+		$("#articles-retrieved").text(articles_downloaded);
+		$("#supporting-articles").text(supporting_articles);
 
 
 		//If all articles have been retrieved, we can hide the loading screen and allow new requests
