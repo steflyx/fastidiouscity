@@ -1,4 +1,4 @@
-#from happytransformer import HappyROBERTA
+from happytransformer import HappyROBERTA
 import numpy as np
 import spacy
 import os
