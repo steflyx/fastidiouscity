@@ -9,6 +9,7 @@ Contains:
 
 var supporting_articles = 0;
 var articles_retrieved = 0;
+var articles_downloaded = 0;
 
 
 //Sends an AJAX GET request to get the links to articles related to the sentence 
@@ -34,11 +35,12 @@ function send_request_articles(sentence_text) {
 		$(".loader-text").text("Found " + data.related_articles.length + " articles! Analyzing them...");
 		articles_to_retrieve = data.related_articles.length;
 		articles_retrieved = 0;
+		articles_downloaded = 0;
 		supporting_articles = 0;
 		for (var i=0; i<data.related_articles.length; i++){
 
-		//Send request to the server to retrieve article info and to compute its support towards the claim
-		article_info = send_request_article_info(data.related_articles[i], data.new_sentence);
+			//Send request to the server to retrieve article info and to compute its support towards the claim
+			article_info = send_request_article_info(data.related_articles[i], data.new_sentence);
 
 		}
 
@@ -48,6 +50,8 @@ function send_request_articles(sentence_text) {
 
 //Asks the server to retrieve info about the article and to compute its support towards the claim
 function send_request_article_info(link, sentence_text){
+
+	
 
 	//Make the request to the server
 	$.getJSON($SCRIPT_ROOT + '/get_article_info', {
@@ -60,18 +64,28 @@ function send_request_article_info(link, sentence_text){
 
 		//Update the number of retrieved articles
 		articles_retrieved += 1;
-		if(data.article_info['support'] >= 50){
-			supporting_articles += 1;
+		if(data.article_info['download_ok'] == 1){
+			articles_downloaded += 1;
+			if(data.article_info['support'] >= 50){
+				supporting_articles += 1;
+			}
 		}
 
+		//We show the balance of supporting/refuting articles
+		if (articles_retrieved == 1){
+			var final_balance = $(document.createElement('p')).html('Out of <span id="articles-retrieved"></span> articles retrieved, <span id="supporting-articles"></span> supported the claim');
+			$("#related-articles-container").find("h1").after('<br>');
+			$("#related-articles-container").find("h1").after(final_balance);
+		}
+		$("#articles_retrieved").text(articles_downloaded);
+		$("#supporting_articles").text(supporting_articles);
+
+
 		//If all articles have been retrieved, we can hide the loading screen and allow new requests
-		//We also show how many articles supported the claim
 		if (articles_retrieved == articles_to_retrieve){
 			is_request_pending = false;
 			$("#related-articles-loader").hide();
-			var final_balance = $(document.createElement('p')).text('Out of ' + articles_retrieved + ' articles retrieved, ' + supporting_articles + ' supported the claim');
-			$("#related-articles-container").find("h1").after('<br>');
-			$("#related-articles-container").find("h1").after(final_balance);
+			
 		}
 
 	});
