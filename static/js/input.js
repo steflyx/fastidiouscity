@@ -58,7 +58,7 @@ function show_text_prediction(prediction_info){
 	//Prepare the text to show positive/negative prediction
 	var prediction_text = prediction_info['prediction'] < 0.5 ? prediction_info['negative_prediction'] : prediction_info['positive_prediction']
 	var prediction_value = prediction_info['prediction'] < 0.5 ? 1 - prediction_info['prediction'] : prediction_info['prediction'];
-	var info_text = "We believe that this text is " + prediction_text + " (confidence: " + Math.trunc(prediction_value*100) + "%).";
+	var info_text = " - We believe that this text is " + prediction_text + " (confidence: " + Math.trunc(prediction_value*100) + "%).";
 
 	//Put everything in a container
 	var prediction_container = $(document.createElement('div')).addClass('text-prediction-container');
