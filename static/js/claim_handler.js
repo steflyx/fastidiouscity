@@ -55,7 +55,7 @@ function show_claim_info(container, sentence, worthiness_prob){
 	//Info for the questionnaire
 	var target = sentence;
 	var prediction = '';
-	var div_sentence = $(document.createElement('div').addClass('selected-sentence-container-text'));
+	var div_sentence = $(document.createElement('div')).addClass('selected-sentence-container-text');
 
 	container.empty();
 	div_sentence.append($(document.createElement('p')).html('You have selected the following sentence:'));
