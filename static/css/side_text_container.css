@@ -6,9 +6,12 @@
     text-align: justify;
 }
 
+.selected-sentence-container-text{
+	border: solid 1px;
+}
+
 .article-info-container{
 	margin-bottom: 0.5em;
-	border-bottom: solid 1px;
 	padding-bottom: 0.5em;
 }
 
@@ -28,6 +31,7 @@
 #related-articles-container h1{
 	margin-top: 0;
 	margin-bottom: 1em;
+	text-align: left;
 }
 
 #related-articles-not-downloaded-container{

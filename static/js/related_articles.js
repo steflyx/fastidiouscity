@@ -16,7 +16,7 @@ var articles_downloaded = 0;
 function send_request_articles(sentence_text) {
 
 	//Show loader and title
-	$("#related-articles-container").append($(document.createElement('h1')).text("Evidence found online to support/refute the claim"));
+	$("#related-articles-container").append($(document.createElement('h1')).text("Evidence found online to support or refute the claim"));
 	$(".loader-text").text("Looking for related articles online...");
 	$("#related-articles-loader").show();
 	is_request_pending = true;

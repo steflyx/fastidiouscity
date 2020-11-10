@@ -55,11 +55,13 @@ function show_claim_info(container, sentence, worthiness_prob){
 	//Info for the questionnaire
 	var target = sentence;
 	var prediction = '';
+	var div_sentence = $(document.createElement('div').addClass('selected-sentence-container-text'));
 
 	container.empty();
-	container.append($(document.createElement('p')).html('You have selected the following sentence:'));
-	container.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
-	container.append("<br>");
+	div_sentence.append($(document.createElement('p')).html('You have selected the following sentence:'));
+	div_sentence.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
+	div_sentence.append("<br>");
+	container.append(div_sentence);
 	if (worthiness_prob < 50){
 		belief = $(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%). ");
 		prediction = "No";
