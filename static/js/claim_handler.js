@@ -36,6 +36,7 @@ $(document).on('click', '.sentence', function(){
 
 	//Prepare the space to fit the related articles
 	$("#no-selected-sentence-info").hide();
+	$(".selected-sentence-container-text").empty();
 	$("#related-articles-container").empty();
 	$("#related-articles-not-downloaded-container").hide();
 
@@ -91,9 +92,11 @@ function send_coreference_request(){
 	}, function(data){
 
 		//Update the sentence to analyze
-		$("#selected-sentence-container").after($(document.createElement('p')).addClass('coreference-sentence-container').html('"<b>' + data.coreference_sentence + '</b>"'));
-		$("#selected-sentence-container").after($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
-		$("#selected-sentence-container").after($(document.createElement('br')));
+		var coreference_container = $(document.createElement('div'));
+		coreference_container.append('br');
+		coreference_container.append($(document.createElement('p')).addClass('coreference-sentence-container').html('"<b>' + data.coreference_sentence + '</b>"'));
+		coreference_container.append($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
+		$("#selected-sentence-container").after(coreference_container);
 		sentence_to_analyze = data.coreference_sentence;
 
 		//Hide the loader
