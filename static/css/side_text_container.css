@@ -11,6 +11,11 @@
 	padding: 0.5em;
 }
 
+.coreference-sentence-container{
+	border: solid 1px;
+	padding: 0.5em;
+}
+
 .article-info-container{
 	margin-bottom: 0.5em;
 	padding-bottom: 0.5em;
