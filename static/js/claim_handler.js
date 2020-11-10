@@ -91,9 +91,10 @@ function send_coreference_request(){
 	}, function(data){
 
 		//Update the sentence to analyze
-		$(".selected-sentence-container").after($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
-		$(".selected-sentence-container").after($(document.createElement('p')).html('"<b>' + data.coreference_sentence + '</b>"'));
-		$(".selected-sentence-container").after($(document.createElement('br')));
+		$("#selected-sentence-container").after($(document.createElement('br')));
+		$("#selected-sentence-container").after($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
+		$("#selected-sentence-container").after($(document.createElement('p')).html('"<b>' + data.coreference_sentence + '</b>"'));
+		$("#selected-sentence-container").after($(document.createElement('br')));
 		sentence_to_analyze = data.coreference_sentence;
 
 		//Hide the loader
