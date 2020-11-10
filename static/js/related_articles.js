@@ -11,14 +11,27 @@ var supporting_articles = 0;
 var articles_retrieved = 0;
 var articles_downloaded = 0;
 
+//Starts the process of searching for online evidence
+$(document).on('click', '.button-search', function(){
+
+	//Decide whether to search the initial sentence or the self-contained one
+	var sentence_to_search = $(this).attr('value') == 'Yes' ? sentence_to_analyze : $(selected_sentence).text();
+
+	//Hide decision buttons and show loader and title
+	$("#related-articles-container").empty();
+	$("#related-articles-container").append($(document.createElement('h1')).text("Evidence found online to support or refute the claim"));
+	$(".loader-text").text("Looking for related articles online...");
+	$("#related-articles-loader").show();
+
+	//Start process
+	send_request_articles(sentence_to_search);
+
+});
+
 
 //Sends an AJAX GET request to get the links to articles related to the sentence 
 function send_request_articles(sentence_text) {
 
-	//Show loader and title
-	$("#related-articles-container").append($(document.createElement('h1')).text("Evidence found online to support or refute the claim"));
-	$(".loader-text").text("Looking for related articles online...");
-	$("#related-articles-loader").show();
 	is_request_pending = true;
 		
 	$.getJSON($SCRIPT_ROOT + '/get_articles', {
@@ -50,8 +63,6 @@ function send_request_articles(sentence_text) {
 
 //Asks the server to retrieve info about the article and to compute its support towards the claim
 function send_request_article_info(link, sentence_text){
-
-	
 
 	//Make the request to the server
 	$.getJSON($SCRIPT_ROOT + '/get_article_info', {
