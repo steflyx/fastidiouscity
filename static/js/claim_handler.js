@@ -44,8 +44,8 @@ $(document).on('click', '.sentence', function(){
 		return;
 	}
 
-	//If the sentence is check-worthy, we send a request to the server to retrieve related articles
-	send_request_articles(selected_sentence.text());
+	//If the sentence is check-worthy, we send a request to the server to obtain its self-contained version
+	send_coreference_request();	
 
 });
 
@@ -60,8 +60,8 @@ function show_claim_info(container, sentence, worthiness_prob){
 	container.empty();
 	div_sentence.append($(document.createElement('p')).html('You have selected the following sentence:'));
 	div_sentence.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
-	div_sentence.append("<br>");
 	container.append(div_sentence);
+	container.append("<br>");
 	if (worthiness_prob < 50){
 		belief = $(document.createElement('p')).text("We don't believe this sentence is a claim (confidence: " + worthiness_prob + "%). ");
 		prediction = "No";
@@ -74,5 +74,32 @@ function show_claim_info(container, sentence, worthiness_prob){
 	container.append(belief);
 	add_show_why(belief, 'worthy', sentence);
 	add_questionnaire(container=belief, detector="Claim", target=sentence, prediction=prediction, target_opt="None");
+
+};
+
+
+//Sends a request to the server to obtain a self-contained version of the sentence
+function send_coreference_request(){
+
+	//Show the loader
+	$(".loader-text").text("Preparing the sentence...");
+	$("#related-articles-loader").show();
+
+	$.getJSON($SCRIPT_ROOT + '/perform_coreference_resolution', {
+		sentence: $(selected_sentence).text(),
+		text: input_text
+	}, function(data){
+
+		//Update the sentence to analyze
+		$(".selected-sentence-container").after($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
+		$(".selected-sentence-container").after($(document.createElement('p')).html('"<b>' + data.coreference_sentence + '</b>"'));
+		$(".selected-sentence-container").after($(document.createElement('br')));
+		sentence_to_analyze = data.coreference_sentence;
+
+		//Hide the loader
+		$("#related-articles-loader").hide();
+
+	};
+
 
 };

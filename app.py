@@ -64,6 +64,7 @@ def analyze_text():
 	print("Predictions on the text: \n", text_predictions)
 	return jsonify(result)	
 
+
 """
 
 Receives:
@@ -71,11 +72,10 @@ Receives:
 	string: 'text' (the entire text)
 
 Returns:
-	array of strings: 'related_articles'
-	string:			  'sentence'
+	string:	'coreference_sentence' (self-contained version of the original sentence)
 
 """
-@app.route('/get_articles')
+@app.route('/perform_coreference_resolution')
 def get_articles():
 
 	#Retrieve sentence to analyze
@@ -85,15 +85,36 @@ def get_articles():
 	print("Received text: ", text)
 
 	#Apply co-reference resolution
-	searched_sentence = coreference.link_entities(text, sentence_text)
-	print("Searching for sentence: ", searched_sentence)
+	coreference_sentence = coreference.link_entities(text, sentence_text)
+	print("Modified self-contained sentence: ", coreference_sentence)	
+
+	#Send back the result
+	result = {'coreference_sentence': coreference_sentence}
+	return jsonify(result)	
+
+
+"""
+
+Receives:
+	string: 'sentence' (the sentence we want to analyze)
+
+Returns:
+	array of strings: 'related_articles'
+
+"""
+@app.route('/get_articles')
+def get_articles():
+
+	#Retrieve sentence to analyze
+	sentence_text = request.args.get('sentence', 0, type=str)
+	print("Received sentence: ", sentence_text)
 
 	#Retrieve links to related articles
-	related_articles_links = news_search.get_related_articles(searched_sentence)
+	related_articles_links = news_search.get_related_articles(sentence_text)
 	print("Retrieved {} links".format(len(related_articles_links)))
 
 	#Send back the result
-	result = {'related_articles': related_articles_links, 'new_sentence': searched_sentence}
+	result = {'related_articles': related_articles_links}
 	return jsonify(result)
 
 """

@@ -8,6 +8,7 @@
 
 .selected-sentence-container-text{
 	border: solid 1px;
+	padding: 0.5em;
 }
 
 .article-info-container{
