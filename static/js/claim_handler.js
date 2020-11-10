@@ -99,7 +99,7 @@ function send_coreference_request(){
 		//Hide the loader
 		$("#related-articles-loader").hide();
 
-	};
+	});
 
 
 };
