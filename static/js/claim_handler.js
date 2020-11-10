@@ -91,9 +91,9 @@ function send_coreference_request(){
 	}, function(data){
 
 		//Update the sentence to analyze
-		$("#selected-sentence-container").after($(document.createElement('br')));
 		$("#selected-sentence-container").after($(document.createElement('p')).addClass('coreference-sentence-container').html('"<b>' + data.coreference_sentence + '</b>"'));
 		$("#selected-sentence-container").after($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
+		$("#selected-sentence-container").after($(document.createElement('br')));
 		sentence_to_analyze = data.coreference_sentence;
 
 		//Hide the loader

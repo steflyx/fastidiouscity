@@ -39,11 +39,6 @@ function send_request_articles(sentence_text) {
 		text: input_text
 	}, function(data){
 
-		//Show the modified sentence without co-reference
-		$("#related-articles-container").append($(document.createElement('p')).text("We used the following sentence to make the search more effective:"));
-		$("#related-articles-container").append($(document.createElement('p')).html('"<b>' + data.new_sentence + '</b>"'));
-		$("#related-articles-container").append($(document.createElement('br')));
-
 		//For each retrieved link, asks the server to send its info
 		$(".loader-text").text("Found " + data.related_articles.length + " articles! Analyzing them...");
 		articles_to_retrieve = data.related_articles.length;
@@ -53,7 +48,7 @@ function send_request_articles(sentence_text) {
 		for (var i=0; i<data.related_articles.length; i++){
 
 			//Send request to the server to retrieve article info and to compute its support towards the claim
-			article_info = send_request_article_info(data.related_articles[i], data.new_sentence);
+			article_info = send_request_article_info(data.related_articles[i], sentence_text);
 
 		}
 
