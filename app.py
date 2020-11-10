@@ -76,7 +76,7 @@ Returns:
 
 """
 @app.route('/perform_coreference_resolution')
-def get_articles():
+def perform_coreference_resolution():
 
 	#Retrieve sentence to analyze
 	sentence_text = request.args.get('sentence', 0, type=str)
