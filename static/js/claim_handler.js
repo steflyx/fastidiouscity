@@ -36,7 +36,7 @@ $(document).on('click', '.sentence', function(){
 
 	//Prepare the space to fit the related articles
 	$("#no-selected-sentence-info").hide();
-	$(".selected-sentence-container-text").empty();
+	$(".coreference-container").empty();
 	$("#related-articles-container").empty();
 	$("#related-articles-not-downloaded-container").hide();
 
@@ -92,7 +92,7 @@ function send_coreference_request(){
 	}, function(data){
 
 		//Update the sentence to analyze
-		var coreference_container = $(document.createElement('div'));
+		var coreference_container = $(document.createElement('div').addClass('coreference-container'));
 		coreference_container.append('br');
 		coreference_container.append($(document.createElement('p')).addClass('coreference-sentence-container').html('"<b>' + data.coreference_sentence + '</b>"'));
 		coreference_container.append($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
