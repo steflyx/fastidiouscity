@@ -74,8 +74,11 @@ def link_entities(text_, sentence, threshold=1e-20):
       text = " ".join(words[:pronoun] + ['[MASK]'] + words[pronoun+1:])
 
     #Predict the [MASK] token
-    results = happy_roberta.predict_mask(text, options=proper_nouns, num_results=max(len(proper_nouns),5))
-    if results[0]['softmax'] >= threshold:
-      words_1[pronoun - len(words_0)] = results[0]['word']
+    try:
+    	results = happy_roberta.predict_mask(text, options=proper_nouns, num_results=max(len(proper_nouns),5))
+    	if results[0]['softmax'] >= threshold:
+      		words_1[pronoun - len(words_0)] = results[0]['word']
+    except:
+    	print("Error with Happy Transformer prediction, word: ", words_1[pronoun - len(words_0)] )
 
   return " ".join(words_1) 
