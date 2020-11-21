@@ -1,6 +1,7 @@
 #form-container{
 	height: 100%;
 	width: 55vw;
+	margin-left: 5vw;
 }
 
 form{
@@ -8,11 +9,9 @@ form{
 }
 
 .input-textarea{
-	width: 80%;
 	height: 43%;
 	margin-top: 2.5em;
 	padding: 1em;
-	margin-left: 10%;
 }
 
 #example-list{
