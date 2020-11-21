@@ -24,9 +24,12 @@ form{
 	cursor: pointer;
 }
 
-input, button{
+#submit-text{
 	width: 10%;
 	margin-left: 45%;
+}
+
+input, button{
 	padding: 10px 15px 11px !important;
 	font-size: 18px !important;
 	background-color: #99ccff;
