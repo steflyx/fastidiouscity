@@ -94,7 +94,8 @@ function send_coreference_request(){
 		//Update the sentence to analyze
 		var coreference_container = $(document.createElement('div')).addClass('coreference-container');
 		coreference_container.append('<br>');
-		coreference_container.append($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
+		coreference_container.append($(document.createElement('p')).text('The chosen sentence contains pronouns (e.g. "he", "she", etc.) that refer to other entities within the original text. In order to make the sentence self-contained, we have attempted to replace them.'));
+		coreference_container.append($(document.createElement('p')).text("We can now search online for evidence to support or refute the claim. Do you want to use the reformulated sentence or the original one?"));
 		coreference_container.append($(document.createElement('p')).addClass('coreference-sentence-container').html('<b>' + data.coreference_sentence + '</b>'));
 		$("#selected-sentence-container").after(coreference_container);
 		sentence_to_analyze = data.coreference_sentence;
@@ -103,8 +104,8 @@ function send_coreference_request(){
 		$("#related-articles-loader").hide();
 
 		//Add buttons to search for online evidence
-		$("#related-articles-container").append($(document.createElement('input')).attr('value', 'Yes').addClass('button-search').attr('id', 'button-search-yes'));
-		$("#related-articles-container").append($(document.createElement('input')).attr('value', 'No').addClass('button-search').attr('id', 'button-search-no'));
+		$("#related-articles-container").append($(document.createElement('button')).attr('value', 'Yes').text('Search for evidence with reformulated sentence'));
+		$("#related-articles-container").append($(document.createElement('button')).attr('value', 'No').text('Search for evidence with original sentence'));
 
 	});
 
