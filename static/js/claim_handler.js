@@ -59,8 +59,8 @@ function show_claim_info(container, sentence, worthiness_prob){
 	var div_sentence = $(document.createElement('div')).addClass('selected-sentence-container-text');
 
 	container.empty();
-	div_sentence.append($(document.createElement('p')).html('You have selected the following sentence:'));
-	div_sentence.append($(document.createElement('p')).html('"<b>' + sentence + '</b>"'));
+	container.append($(document.createElement('p')).html('You have selected the following sentence:'));
+	div_sentence.append($(document.createElement('p')).html('<b>' + sentence + '</b>'));
 	container.append(div_sentence);
 	container.append("<br>");
 	if (worthiness_prob < 50){
@@ -95,7 +95,7 @@ function send_coreference_request(){
 		var coreference_container = $(document.createElement('div')).addClass('coreference-container');
 		coreference_container.append('<br>');
 		coreference_container.append($(document.createElement('p')).text("The sentence contains references to other entities from the original text. Do you want to use the following reformulation instead to search for evidence online?"));
-		coreference_container.append($(document.createElement('p')).addClass('coreference-sentence-container').html('"<b>' + data.coreference_sentence + '</b>"'));
+		coreference_container.append($(document.createElement('p')).addClass('coreference-sentence-container').html('<b>' + data.coreference_sentence + '</b>'));
 		$("#selected-sentence-container").after(coreference_container);
 		sentence_to_analyze = data.coreference_sentence;
 
