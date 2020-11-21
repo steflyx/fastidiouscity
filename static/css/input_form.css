@@ -1,5 +1,6 @@
 #form-container{
 	height: 100%;
+	width: 55vw;
 }
 
 form{
@@ -25,8 +26,8 @@ form{
 }
 
 #submit-text{
-	width: 10%;
-	margin-left: 45%;
+	width: 26%;
+	margin-left: 37%;
 }
 
 input, button{
@@ -42,6 +43,6 @@ input, button{
 	margin-top: 1em;
 }
 
-input, button:hover{
+input:hover, button:hover{
 	background-color: #66b3ff;
 }
