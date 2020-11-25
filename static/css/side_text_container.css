@@ -23,7 +23,10 @@
 
 
 .button-search{
-	width: 100%;
+	width: 49%;
+    margin-right: 1%;
+    height: 8em;
+    float: left;
 }
 
 #button-search-yes{
