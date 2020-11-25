@@ -34,7 +34,7 @@ $(document).on('click', '.show_why', function(){
 
 		//Remove 'show why' button and insert a short intro on how the explanation works
 		button.empty();
-		container.append($(document.createElement('p')).html("Words <span style='background-color: rgb(0,255,0)'>highlighted in green</span> support the prediction, those in <span style='background-color: rgb(255,0,0)'>red</span> counter it").css('margin: 0.5em'));
+		container.append($(document.createElement('p')).html("Words <span style='background-color: rgb(0,255,0)'>highlighted in green</span> support the prediction, those in <span style='background-color: rgb(255,0,0)'>red</span> counter it").css('margin', '0.5em'));
 		
 		//Show the explanation		
 		var explanation = $(document.createElement('p')).addClass('explanation-text').html(data.explanation);
