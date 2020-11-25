@@ -21,10 +21,9 @@
 	padding: 0.5em;
 }
 
+
 .button-search{
-	width: 20%;
-    text-align: center;
-    padding: 3%;
+	width: 100%;
 }
 
 #button-search-yes{

@@ -104,8 +104,8 @@ function send_coreference_request(){
 		$("#related-articles-loader").hide();
 
 		//Add buttons to search for online evidence
-		$("#related-articles-container").append($(document.createElement('button')).attr('value', 'Yes').text('Search for evidence with reformulated sentence'));
-		$("#related-articles-container").append($(document.createElement('button')).attr('value', 'No').text('Search for evidence with original sentence'));
+		$("#related-articles-container").append($(document.createElement('button')).addClass('button-search').attr('value', 'Yes').text('Search for evidence with reformulated sentence'));
+		$("#related-articles-container").append($(document.createElement('button')).addClass('button-search').attr('value', 'No').text('Search for evidence with original sentence'));
 
 	});
 

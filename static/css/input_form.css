@@ -19,6 +19,7 @@ form{
 	text-align: center; 
 	text-decoration: underline; 
 	color: blue;
+	list-style: none;
 }
 
 #example-list:hover{
