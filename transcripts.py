@@ -16,7 +16,7 @@ def retrieve_trump():
 	main_page = requests.get(BASE_URL)
 	if main_page.status_code != 200:
  		return "Error retrieving transcript"
- 	soup = BeautifulSoup(main_page.content, 'html.parser')
+	soup = BeautifulSoup(main_page.content, 'html.parser')
 
  	#Retrieve links to transcripts and choose a random one
 	speeches_url = [container.find('a')['href'] for container in soup.find_all('div', class_='col-md-4 mv3')]
