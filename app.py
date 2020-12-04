@@ -5,6 +5,7 @@ import nltk
 import news_search
 import csv
 import coreference
+import transcripts
 nltk.download('punkt')
 
 app = Flask(__name__, static_url_path='/static')
