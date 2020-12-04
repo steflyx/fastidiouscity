@@ -82,13 +82,15 @@ function show_text_prediction(prediction_info){
 $("#example-list li").click(function(){
 
 	var filename = $(this).attr('name');
-			
+
+	$('body').css('cursor', 'wait');			
 	$.getJSON($SCRIPT_ROOT + '/get_example', {
 		example: filename
 	}, function(data){
 
 		//Load example in the input area
 		$('#user-text-input').text(data.example);
+		$('body').css('cursor', 'default');
 
 	});
 
