@@ -82,9 +82,6 @@ function show_text_prediction(prediction_info){
 $("#example-list li").click(function(){
 
 	var filename = $(this).attr('name');
-	if (filename == null){
-		return;
-	}
 			
 	$.getJSON($SCRIPT_ROOT + '/get_example', {
 		example: filename

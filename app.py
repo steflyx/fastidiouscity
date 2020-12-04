@@ -212,13 +212,19 @@ def explain_prediction():
 """
 
 Returns a text that can be used as example by the user
+The text can be one of the examples prepared by us or a transcript from a random Trump speech (thanks to rev.com)
 
 """
 @app.route('/get_example')
 def get_example():
 	example_name = request.args.get('example', 0, type=str)
+	
+	if example_name == 'random_trump':
+		text = transcripts.retrieve_trump()
+
 	with open('Examples/' + example_name, 'r') as f:
 		text = f.read()
+
 	return jsonify({'example': text})
 
 
