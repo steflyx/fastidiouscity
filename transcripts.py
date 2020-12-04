@@ -26,8 +26,8 @@ def retrieve_trump():
 
 	#Retrieve speech and select some paragraphs from it
 	speech = BeautifulSoup(chosen_page.content, 'html.parser').find('div', class_='fl-callout-text').find_all('p')
-	if len(speech) > NUMBER_OF_PARAGRAPHS:
-		first_selected_paragraph = random.randint(0, len(speech) - NUMBER_OF_PARAGRAPHS)
-		speech = speech[first_selected_paragraph : first_selected_paragraph + NUMBER_OF_PARAGRAPHS]
+	if len(speech) > MAX_NUMBER_OF_PARAGRAPHS:
+		first_selected_paragraph = random.randint(0, len(speech) - MAX_NUMBER_OF_PARAGRAPHS)
+		speech = speech[first_selected_paragraph : first_selected_paragraph + MAX_NUMBER_OF_PARAGRAPHS]
 
 	return " ".join([text.get_text().split('\n')[1] for text in speech]) #.split('\n')[1] removes the name of the speaker from the paragraph
