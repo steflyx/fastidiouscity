@@ -222,9 +222,9 @@ def get_example():
 	
 	if example_name == 'random_trump':
 		text = transcripts.retrieve_trump()
-
-	with open('Examples/' + example_name, 'r') as f:
-		text = f.read()
+	else:
+		with open('Examples/' + example_name, 'r') as f:
+			text = f.read()
 
 	return jsonify({'example': text})
 
