@@ -6,7 +6,10 @@ import news_search
 import csv
 import transcripts
 nltk.download('punkt')
+
 COREFERENCE_ACTIVE = True
+if COREFERENCE_ACTIVE:
+	import coreference
 
 app = Flask(__name__, static_url_path='/static')
 
