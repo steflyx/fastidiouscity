@@ -8,6 +8,9 @@ happy_roberta = HappyROBERTA("roberta-large")
 nlp = spacy.load("en")
 #On some architectures
 #nlp = spacy.load("en_core_web_sm")
+#
+#On other architectures, launch command:
+#$ python3 -m spacy download en
 
 #To load the model
 print("AI will cause world ", happy_roberta.predict_mask("AI will cause world [MASK]", num_results=5)[0]['word'])

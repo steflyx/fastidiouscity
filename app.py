@@ -4,9 +4,9 @@ import concurrent.futures
 import nltk
 import news_search
 import csv
-import coreference
 import transcripts
 nltk.download('punkt')
+COREFERENCE_ACTIVE = True
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -85,9 +85,13 @@ def perform_coreference_resolution():
 	print("Received sentence: ", sentence_text)
 	print("Received text: ", text)
 
-	#Apply co-reference resolution
-	coreference_sentence = coreference.link_entities(text, sentence_text)
-	print("Modified self-contained sentence: ", coreference_sentence)	
+	#If active, apply co-reference resolution
+	if COREFERENCE_ACTIVE:
+		coreference_sentence = coreference.link_entities(text, sentence_text)
+		print("Modified self-contained sentence: ", coreference_sentence)	
+	else:
+		coreference_sentence = sentence_text
+		print("Coreference not active")
 
 	#Send back the result
 	result = {'coreference_sentence': coreference_sentence}
